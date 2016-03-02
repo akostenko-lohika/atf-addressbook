@@ -1,4 +1,4 @@
 debug_level=debug
 browser=firefox
 temp_location_for_tests=None
-atfLocation=/Users/andrijkostenko/PycharmProjects/ATF/src
+atfLocation=/Users/andrijkostenko/PycharmProjects/ATF
