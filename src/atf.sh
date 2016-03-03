@@ -6,9 +6,9 @@
 # you can specify either test folders or specific test(s)
 #
 
-cd /Users/andrijkostenko/PycharmProjects/atf-addressbook/src
+#cd /Users/andrijkostenko/PycharmProjects/atf-addressbook/src
 #export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/Documents/workspace/HelloWorld2/src
-export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/PycharmProjects/atf-addressbook/src
+#export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/PycharmProjects/atf-addressbook/src
 
 #python core/ATFcore.py -c 'run_tests()'
 #python -c 'from core.ATFcore import *;run_tests_advanced(tests="'$1'");'
