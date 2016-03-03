@@ -42,7 +42,7 @@ class Test_Contact(BaseTest):
         contactspage2.set_value('middlename','middlename'+somestring)
         contactspage2.set_value('lastname','lastname'+somestring)
         contactspage2.set_value('nickname','nickname'+somestring)
-        contactspage2.set_value('photo','/Users/andrijkostenko/Test-python/12605283_787259251406544_5802194393579230887_o.jpg')
+        contactspage2.set_value('photo','test_files/pictures/001.jpg')
         contactspage2.set_value('title','title'+somestring)
         contactspage2.set_value('company','company'+somestring)
         contactspage2.set_value('address','address'+somestring)
