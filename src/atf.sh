@@ -117,6 +117,7 @@ if [ -z "$ATFIMAGE" ] || [ -z "$debug_level" ] || [ -z "$temp_location_for_tests
     exit 1
 fi
 
+rm -rf $ATFIMAGE/$temp_location_for_tests
 mkdir $ATFIMAGE/$temp_location_for_tests
 cp -r $ATFIMAGE/tests/* $ATFIMAGE/$temp_location_for_tests
 
