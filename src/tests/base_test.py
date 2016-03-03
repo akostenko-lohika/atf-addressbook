@@ -9,11 +9,30 @@ from pages.login import LoginPage
 from pages.base_page import BasePage
 from locators.locators import LoginPageLocators
 #from selenium.webdriver.chrome.service.time import *
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class BaseTest(object):
     """Base class to initialize the base test that will be called from all tests"""
 
     def setup_class(self):
+        print ("basic setup into module")
+        if test_browser == 'Chrome':
+            self.driver = webdriver.Remote(
+            command_executor='http://127.0.0.1:4444/wd/hub',
+            desired_capabilities=DesiredCapabilities.FIREFOX)
+            #self.driver = webdriver.Chrome()
+            print "Should be Firefox"
+        else:
+            self.driver = webdriver.Remote(
+            command_executor='http://127.0.0.1:4444/wd/hub',
+            desired_capabilities=DesiredCapabilities.CHROME)
+        print "opening browser"+test_browser
+        self.driver.get(URL_MAIN)
+        ####WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "LoginForm")))
+        #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_form))
+
+
+    def Asetup_class(self):
         print ("basic setup into module")
         if test_browser == 'Chrome':
             self.driver = webdriver.Chrome()

@@ -48,9 +48,9 @@ def main():
         arguments = sys.argv[1]
     else:
         arguments = None
-    read_config_file('atf.properties')
-    run_tests_advanced(tests=arguments)
-
+    #read_config_file('atf.properties')
+    #run_tests_advanced(tests=arguments)
+    pytest.main('-v -x temp_tests')
 
 if __name__ == '__main__':
     main()
