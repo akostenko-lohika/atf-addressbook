@@ -50,7 +50,7 @@ def main():
         arguments = None
     #read_config_file('atf.properties')
     #run_tests_advanced(tests=arguments)
-    pytest.main('-v -x temp_tests')
+    pytest.main('--junitxml results.xml -v -x temp_tests')
 
 if __name__ == '__main__':
     main()

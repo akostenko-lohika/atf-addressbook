@@ -32,6 +32,7 @@ export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/PycharmProjects/atf-addressb
 # PYTHONPATH
 # SELENIUM_OPTIONS
 # RESULTS_DIR
+# delete old tests if they exist
 # copy tests into TEST_HOME/tests/ directory
 # then run python code
 
