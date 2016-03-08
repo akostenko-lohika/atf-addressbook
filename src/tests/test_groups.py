@@ -36,7 +36,7 @@ class Test_Groups(BaseTest):
         groupaddpage.set_value('group_footer', 'group footer')
         groupaddpage.submit()
         groupaddedpage = groups.GroupUpdatedPage(self.driver)
-        assert groupaddedpage.get_status_message()==groupaddedpage.expected_status_message_for_added_group
+        assert groupaddedpage.get_status_message()==groupaddedpage.expected_mess_for_added
         groupaddedpage.click_menu_link_groups()
         groupspage.select_group('some group')
         groupspage.click_edit_group()
@@ -44,7 +44,7 @@ class Test_Groups(BaseTest):
         groupeditpage.clear_value('group_name')
         groupeditpage.set_value('group_name', 'somevalue')
         groupeditpage.submit()
-        assert groupaddedpage.get_status_message()==groupaddedpage.expected_status_message_for_updated_group
+        assert groupaddedpage.get_status_message()==groupaddedpage.expected_mess_for_updated
         groupeditpage.click_menu_link_groups()
         groupspage.select_group('somevalue')
         groupspage.click_delete_group()

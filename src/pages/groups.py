@@ -1,60 +1,59 @@
-#from selenium.webdriver.common.by import By
-#import selenium.webdriver.remote.webelement
-#from selenium import * 
+"""This is Groups page
+"""
 from selenium.webdriver.common.by import By
-from base_page import BasePage
-from locators.locators import BaseLocators,GroupsPageLocators,GroupAddPageLocators,GroupUpdatedPageLocators
-from elements.elements import submitButton,checkBox,inputText
+from pages.base_page import BasePage
+from locators.locators import BaseLocators, GroupsPageLocators, GroupAddPageLocators,\
+    GroupUpdatedPageLocators
+from elements.elements import WebComponent, CheckBox, InputText, SubmitButton
 
 
 class GroupsPage(BasePage):
     """Groups main page"""
     def click_add_group(self):
-        """click Add Group button"""
-        submitButton(self.driver).click(GroupsPageLocators.add_group_button)
-    
-    def click_edit_group(self):
-        """click Edit Group button"""
-        submitButton(self.driver).click(GroupsPageLocators.edit_group_button)
-        
-    def click_delete_group(self):
-        """click Delete Group button"""
-        submitButton(self.driver).click(GroupsPageLocators.delete_group_button)
+        """click Add Group button."""
+        SubmitButton(self.driver, GroupsPageLocators.add_group_button).click()
 
-    def select_group(self,group_name):
-        """click checkbox for specific Group"""
+    def click_edit_group(self):
+        """click Edit Group button."""
+        SubmitButton(self.driver, GroupsPageLocators.edit_group_button).click()
+
+    def click_delete_group(self):
+        """click Delete Group button."""
+        SubmitButton(self.driver, GroupsPageLocators.delete_group_button).click()
+
+    def select_group(self, group_name):
+        """click checkbox for specific Group."""
         locator = (By.CSS_SELECTOR, "input[title='Select ("+group_name+")']")
-        checkBox(self.driver).click(locator)
+        CheckBox(self.driver, locator).click()
 
 
 class GroupAddPage(BasePage):
     """Group Add page"""
-    
-    """
-    expected_status_message_for_added_group = "A new group has been entered into the address book.\n\
-return to the group page"
-    expected_status_message_for_updated_group = "Group record has been updated.\n\
-return to the group page"
-    expected_status_message_for_deleted_group = "Group has been removed.\n\
-return to the group page"
-"""
-
-
-    def get_value(self,field_name):
+    expected_mess_for_added = "A new group has been entered into the address" \
+                              " book.\nreturn to the group page"
+    expected_mess_for_updated = "Group record has been updated.\n" \
+                                                "return to the group page"
+    expected_mess_for_deleted = "Group has been removed.\n" \
+                                                "return to the group page"
+    def get_value(self, field_name):
+        """Get value from specified input field."""
         newfield_name = getattr(GroupAddPageLocators, field_name)
-        return inputText(self.driver).getValue(newfield_name)
-    
-    def set_value(self,field_name,new_value):
-        newfield_name = getattr(GroupAddPageLocators, field_name)
-        inputText(self.driver).setValue(newfield_name, new_value)
+        return InputText(self.driver, newfield_name).get_value()
 
-    def clear_value(self,field_name):
+    def set_value(self, field_name, new_value):
+        """Set value in specified input field."""
         newfield_name = getattr(GroupAddPageLocators, field_name)
-        inputText(self.driver).clearValue(newfield_name)
-        
+        InputText(self.driver, newfield_name).set_value(new_value)
+
+    def clear_value(self, field_name):
+        """Clear value in specified input field."""
+        newfield_name = getattr(GroupAddPageLocators, field_name)
+        InputText(self.driver, newfield_name).clear_value()
+
     def submit(self):
-        submitButton(self.driver).click(BaseLocators.submit)
-        
+        """Submit form."""
+        SubmitButton(self.driver, BaseLocators.submit).click()
+
 
 class GroupEditPage(GroupAddPage):
     """created for testing purposes"""
@@ -62,13 +61,12 @@ class GroupEditPage(GroupAddPage):
 
 class GroupUpdatedPage(BasePage):
     """created for testing purposes"""
-    expected_status_message_for_added_group = "A new group has been entered into the address book.\n\
-return to the group page"
-    expected_status_message_for_updated_group = "Group record has been updated.\n\
-return to the group page"
-    expected_status_message_for_deleted_group = "Group has been removed.\n\
-return to the group page"
+    expected_mess_for_added = "A new group has been entered into the address" \
+                              " book.\nreturn to the group page"
+    expected_mess_for_updated = "Group record has been updated.\n" \
+                                                "return to the group page"
+    expected_mess_for_deleted = "Group has been removed.\n" \
+                                                "return to the group page"
     def get_status_message(self):
-        div_element = self.driver.find_element(*GroupUpdatedPageLocators.status).text
-        #div_element = self.driver.find_element(*GroupUpdatedPageLocators.status).get_attribute('textContent')
-        return div_element
+        """Get status message on page."""
+        return WebComponent(self.driver, GroupUpdatedPageLocators.status).get_text()
