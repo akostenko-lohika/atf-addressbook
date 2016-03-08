@@ -59,6 +59,6 @@ class Test_Groups(BaseTest):
         #loginpage.login()
         GroupsService(self.driver).create("hehehe")
 
-    """def teardown_class(self):
+    def teardown_class(self):
         print ("basic teardown into module")
-        self.driver.close()"""
+        self.driver.close()
