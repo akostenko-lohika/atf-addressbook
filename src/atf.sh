@@ -2,8 +2,8 @@
 
 
 # + analyze imput parameters,
-# - check if properties file exists
-# - read property file
+# + check if properties file exists
+# + read property file
 # - properties file should include:
 
 # TEST_HOME = /home/user/testhome/
@@ -82,7 +82,7 @@ debug_level=`getTag debug_level ${PROPS_FILE}`
 browser=`getTag browser ${PROPS_FILE}`
 temp_location_for_tests=`getTag temp_location_for_tests ${PROPS_FILE}`
 atfLocation=`getTag atfLocation ${PROPS_FILE}`
-
+RESULTS_DIR=`getTag RESULTS_DIR ${PROPS_FILE}`
 
 ##Make sure we can find the atf.sh script (and that it's executable)
 #if [ -x $ATFIMAGE/atf.sh ]; then
@@ -110,10 +110,27 @@ fi
 
 rm -rf $ATFIMAGE/$temp_location_for_tests
 mkdir $ATFIMAGE/$temp_location_for_tests
-cp -r $ATFIMAGE/tests/* $ATFIMAGE/$temp_location_for_tests
+#cp -r $ATFIMAGE/tests/* $ATFIMAGE/$temp_location_for_tests
 
 #java -jar /Users/andrijkostenko/PycharmProjects/selenium-server-standalone-2.52.0.jar &
-python core/ATFcore.py $temp_location_for_tests
+
+#RESULTS_DIR
+#python core/ATFcore.py temp_location results_dir PYTEST_PARAM browser test1 test2 test3...
+
+
+cp -r $ATFIMAGE/tests/base_test.py $ATFIMAGE/$temp_location_for_tests
+
+for var in "${@:2}"
+do
+    #echo "$var"
+    cp -r $ATFIMAGE/tests/$var $ATFIMAGE/$temp_location_for_tests
+done
+
+
+
+
+
+python core/ATFcore.py $temp_location_for_tests $RESULTS_DIR 'NoPytestParam' $browser
 
 #Make sure we can find the atf.sh script (and that it's executable)
 #if [ -x $ATFIMAGE/atf.sh ]; then

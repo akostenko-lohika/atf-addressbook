@@ -44,13 +44,26 @@ def read_config_file(filename=None):
 def main():
     # print 'sys.argv[1]'+sys.argv[1]
     #print len(sys.argv)
+    parameters = None
     if len(sys.argv) > 1:
         arguments = sys.argv[1]
+        parameters = sys.argv
     else:
         arguments = None
     #read_config_file('atf.properties')
     #run_tests_advanced(tests=arguments)
-    pytest.main('--junitxml results.xml -v -x temp_tests')
+    #python core/ATFcore.py temp_location results_dir PYTEST_PARAM browser test1 test2 test3...
+
+    print 'parameters[0]:'+parameters[0]
+    temp_test_location = parameters[1]
+    print 'parameters[1]:'+parameters[1]
+    print 'parameters[2]:'+parameters[2]
+    print 'parameters[3]:'+parameters[3]
+    #print 'parameters[4]:'+parameters[4]
+    #print 'parameters[5]:'+parameters[5]
+
+
+    pytest.main('--junitxml results.xml -v -x '+temp_test_location)
 
 if __name__ == '__main__':
     main()
