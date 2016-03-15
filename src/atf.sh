@@ -26,12 +26,14 @@
 # check if properties file exists
 # read property file
 # properties file should include:
+
 # TEST_HOME = /home/user/testhome/
 # PYTHON_VERSION
 # BROWSER
 # PYTHONPATH
 # SELENIUM_OPTIONS
 # RESULTS_DIR
+
 # delete old tests if they exist
 # copy tests into TEST_HOME/tests/ directory
 # then run python code
