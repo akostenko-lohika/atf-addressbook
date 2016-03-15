@@ -1,31 +1,10 @@
 #!/bin/sh
-# prepare keys
-# example ./atf.sh <config file> <list of tests>
-# <config file> is mandatory
-# list of tests is not
-# you can specify either test folders or specific test(s)
-#
-
-#cd /Users/andrijkostenko/PycharmProjects/atf-addressbook/src
-#export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/Documents/workspace/HelloWorld2/src
-#export PYTHONPATH=$PYTHONPATH:/Users/andrijkostenko/PycharmProjects/atf-addressbook/src
-
-#python core/ATFcore.py -c 'run_tests()'
-#python -c 'from core.ATFcore import *;run_tests_advanced(tests="'$1'");'
-#RESULT_FOO=`python -c 'import test; print test.get_foo()'`
-#ssh rakostenk@$1
-#ssh admin@m1060s02.sma 'userconfig role new role1 description email ; commit "test"'
-
-# python core/ATFcore.py config_file tests1 tests2
-#python core/ATFcore.py $1 $2 $3
 
 
-
-
-# analyze imput parameters,
-# check if properties file exists
-# read property file
-# properties file should include:
+# + analyze imput parameters,
+# - check if properties file exists
+# - read property file
+# - properties file should include:
 
 # TEST_HOME = /home/user/testhome/
 # PYTHON_VERSION
@@ -34,9 +13,9 @@
 # SELENIUM_OPTIONS
 # RESULTS_DIR
 
-# delete old tests if they exist
-# copy tests into TEST_HOME/tests/ directory
-# then run python code
+# - delete old tests if they exist
+# - copy tests into TEST_HOME/tests/ directory
+# - then run python code
 
 
 #cd TEST_HOME/tests
@@ -83,17 +62,27 @@ if [ -z "$PROPS_FILE" ]; then
     exit 1
 fi
 
+
+
 #Read the location if the ATF image
-ATFIMAGE=`getTag atfLocation ${PROPS_FILE}`
+ATFIMAGE=`getTag ATFIMAGE ${PROPS_FILE}`
 if [ -z "$ATFIMAGE" ]; then
-    echo "Could not find the property 'atfLocation' in the file ${PROPS_FILE}"
-    exit 1
+    echo "Could not find the property 'ATFIMAGE' in the file ${PROPS_FILE}"
+    #exit 1
 fi
+
+# Make current directory as ATFIMAGE
+if [ -z  $ATFIMAGE ]; then
+    echo 'ATFIMAGE is empty, so make current directory as ATFIMAGE'
+    ATFIMAGE=$(pwd)
+fi
+
 
 debug_level=`getTag debug_level ${PROPS_FILE}`
 browser=`getTag browser ${PROPS_FILE}`
 temp_location_for_tests=`getTag temp_location_for_tests ${PROPS_FILE}`
 atfLocation=`getTag atfLocation ${PROPS_FILE}`
+
 
 ##Make sure we can find the atf.sh script (and that it's executable)
 #if [ -x $ATFIMAGE/atf.sh ]; then
@@ -106,14 +95,14 @@ atfLocation=`getTag atfLocation ${PROPS_FILE}`
 #fi
 
 
-echo $debug_level
-echo $browser
-echo $temp_location_for_tests
-echo $ATFIMAGE
-echo $atfLocation
+#echo $debug_level
+#echo $browser
+#echo $temp_location_for_tests
+#echo $ATFIMAGE
+#echo $atfLocation
 
 
-if [ -z "$ATFIMAGE" ] || [ -z "$debug_level" ] || [ -z "$temp_location_for_tests" ] || [ -z "$atfLocation" ]
+if [ -z "$ATFIMAGE" ] || [ -z "$debug_level" ] || [ -z "$temp_location_for_tests" ]
  then
     echo "Could not find all needed properties in the file ${PROPS_FILE}"
     exit 1

@@ -60,38 +60,5 @@ class BaseTest(object):
 
     def teardown_class(self):
         print ("basic teardown into module")
-        #self.driver.close()
-
-
-class BaseTestOlive(object):
-    """Base class to initialize the base test that will be called from all tests"""
-
-    def setup_class(self):
-        print ("basic setup into module")
-        if test_browser == 'Chrome':
-            self.driver = webdriver.Chrome()
-        else:
-            self.driver = webdriver.Firefox()
-        print "opening browser"+test_browser
-        self.driver.get(URL_MAIN_OLIVE)
-        ####WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "LoginForm")))
-        #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_form))
-
-    def do_login(self):
-        test_page = LoginPage(self.driver)
-        test_page.enter_login_username(valid_username)
-        test_page.enter_login_password(valid_password)
-        test_page.submit_login_form()
-
-    def do_logout(self):
-        test_page = BasePage(self.driver)
-        test_page.click_logout_link()
-
-
-    def create_screeshot(self, name, path=None):
-        self.driver.save_screenshot(path+'/'+name)
-
-
-    def teardown_class(self):
-        print ("basic teardown into module")
         self.driver.close()
+

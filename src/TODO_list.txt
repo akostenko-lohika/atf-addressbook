@@ -1,4 +1,5 @@
 
 1. Finish with ATF.sh
-2. Create github repository
-3. Adjust Jenkins Job to pull all sources from github and then run specified tests
++2. Create github repository
++3. Adjust Jenkins Job to pull all sources from github and then run specified tests
+4. Configure appropriately Jenkins job
