@@ -57,13 +57,14 @@ def main():
     print 'parameters[0]:'+parameters[0]
     temp_test_location = parameters[1]
     print 'parameters[1]:'+parameters[1]
+    results_dir = parameters[2]
     print 'parameters[2]:'+parameters[2]
     print 'parameters[3]:'+parameters[3]
     #print 'parameters[4]:'+parameters[4]
     #print 'parameters[5]:'+parameters[5]
 
 
-    pytest.main('--junitxml results.xml -v -x '+temp_test_location)
+    pytest.main('--junitxml '+results_dir+'/results.xml -v -x '+temp_test_location)
 
 if __name__ == '__main__':
     main()
