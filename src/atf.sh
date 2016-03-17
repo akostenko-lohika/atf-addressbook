@@ -115,7 +115,7 @@ do
 done
 
 # + Create REPORT directory
-# - if it exists then rename it to REPORT_TIMESTAMP
+# + if it exists then rename it to REPORT_TIMESTAMP
 # - REPORT should include HTML,test reports and LOGS (atf.log)
 
 
@@ -124,7 +124,7 @@ then
     echo "Directory "$ATFIMAGE/$RESULTS_DIR" exists."
     mv $ATFIMAGE/$RESULTS_DIR $ATFIMAGE/$RESULTS_DIR-$(date +"%y-%m-%d-%H-%M")
 else
-    echo "Directory "$ATFIMAGE/$RESULTS_DIR" does not exists."
+    echo "Directory "$ATFIMAGE/$RESULTS_DIR" does not exist."
     mkdir $ATFIMAGE/$RESULTS_DIR
 fi
 
