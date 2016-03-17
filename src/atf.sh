@@ -133,5 +133,3 @@ fi
 # Run python code
 # Example of python command: python core/ATFcore.py temp_location results_dir PYTEST_PARAM browser test1 test2 test3...
 python core/ATFcore.py $temp_location_for_tests $RESULTS_DIR 'NoPytestParam' $browser
-
-cp $RESULTS_DIR/results.xml $ATFIMAGE
