@@ -64,7 +64,7 @@ def main():
     #print 'parameters[5]:'+parameters[5]
 
 
-    pytest.main(' --html=report.html --resultlog=path --junitxml '+results_dir+'/results.xml -v -x '+temp_test_location)
+    pytest.main(' --html='+results_dir+'/report.html --resultlog='+results_dir+'/results.log --junitxml '+results_dir+'/results.xml -v -x '+temp_test_location)
     # Usage if pytest:
     """
 py.test --maxfail=2    # stop after two failures
