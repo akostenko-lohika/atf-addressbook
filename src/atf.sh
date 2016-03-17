@@ -114,6 +114,12 @@ do
     cp -r $ATFIMAGE/tests/$var $ATFIMAGE/$temp_location_for_tests
 done
 
+# If not tests were specified
+if [ -d ${@:2} ]
+then
+    cp $ATFIMAGE/tests/test*.py $ATFIMAGE/$temp_location_for_tests
+fi
+
 # + Create REPORT directory
 # + if it exists then rename it to REPORT_TIMESTAMP
 # - REPORT should include HTML,test reports and LOGS (atf.log)
