@@ -1,3 +1,4 @@
+import time
 #import pytest
 #from selenium import webdriver
 #from pages import login
@@ -35,5 +36,31 @@ class Test_Search_on_main_page(BaseTest):
         #self.do_login()
         test_page = HomePage(self.driver)
         test_page.search_on_page('hehe')
-        test_page.navigate_to("5.ua")
+        #test_page.navigate_to("5.ua")
+
+    def test_search_with_sorting(self):
+        #self.do_login()
+        test_page = HomePage(self.driver)
+        test_page.search_on_page('')
+        #
+        #
+        test_page.sort_table(name='phone')
+        time.sleep(2)
+        test_page.sort_table(name='email')
+        time.sleep(2)
+        test_page.sort_table(name='name')
+        time.sleep(2)
+        test_page.sort_table(name='photo')
+        time.sleep(2)
+        test_page.sort_table(name='address')
+        time.sleep(2)
+
+
+        #test_page.navigate_to("5.ua")
+        # def sort_table(self, name=('photo','name','address','email','phone')):
+
+
+    def teardown_class(self):
+        print ("basic teardown into module")
+        #self.driver.close()
 
