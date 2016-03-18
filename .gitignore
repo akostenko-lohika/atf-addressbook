@@ -72,7 +72,7 @@ target/
 .env
 
 # ATF results folders
-atf_results
+atf_results*
 
 # results file:
 results.xml
@@ -85,3 +85,6 @@ temp_tests
 
 # atf_backup.sh
 atf_backup.sh
+
+# .DS_Store
+.DS_Store
