@@ -7,7 +7,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.login import LoginPage
 from pages.base_page import BasePage
-from locators.locators import LoginPageLocators
 #from selenium.webdriver.chrome.service.time import *
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 

@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base_test import BaseTest
-from locators.locators import LoginPageLocators
+#from locators.locators import LoginPageLocators
 from services.services import LoginService
 
 #should try fixtures definition @pytest.fixture ...
@@ -29,7 +29,7 @@ class Test_Login(BaseTest):
         login_page.submit_login_form()
         # Wait until page is loaded and check whether there is logout form
         #WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "LoginForm")))
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_form))
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(login_page.login_form))
         #EC.presence_of_element_located
         #assert self.driver.find_element_by_name("pass")
 

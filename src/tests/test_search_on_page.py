@@ -62,5 +62,5 @@ class Test_Search_on_main_page(BaseTest):
 
     def teardown_class(self):
         print ("basic teardown into module")
-        #self.driver.close()
+        self.driver.close()
 
