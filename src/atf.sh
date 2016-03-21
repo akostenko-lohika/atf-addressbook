@@ -18,8 +18,8 @@
 
 # cd TEST_HOME/tests and
 # + Create REPORT directory
-# - if it exists then rename it to REPORT_TIMESTAMP
-# - REPORT should include HTML,test reports and LOGS (atf.log)
+# + if it exists then rename it to REPORT_TIMESTAMP
+# + REPORT should include HTML,test reports and LOGS (atf.log)
 
 # Use whitespece between shell script parameters
 
